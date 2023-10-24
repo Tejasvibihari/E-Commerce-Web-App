@@ -1,0 +1,10 @@
+.circle-image {
+    border: 4px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+.circle-image:hover {
+    border: 4px solid linear-gradient(to right, #ff6a00, #ee0979);
+}
