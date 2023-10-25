@@ -40,6 +40,20 @@ app.get("/dashboard", (req, res) => {
 app.get("/product", (req, res) => {
     res.render("product.ejs");
 });
+// Add Product 
+
+app.get("/addmen", (req, res) => {
+    res.render("addmen.ejs");
+});
+app.get("/addwomen", (req, res) => {
+    res.render("addwomen.ejs");
+});
+app.get("/addkid", (req, res) => {
+    res.render("addkid.ejs");
+});
+app.get("/addfootwear", (req, res) => {
+    res.render("addfootwear.ejs");
+});
 app.get("/order", (req, res) => {
     res.render("order.ejs");
 });

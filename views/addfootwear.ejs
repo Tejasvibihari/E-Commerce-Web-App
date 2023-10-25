@@ -1,0 +1,44 @@
+<%- include('partials/adminheader.ejs') %>
+
+    <div class="content">
+        <div class="container mt-5">
+            <h1 class="text-center product_head">Add Footwear Product</h1>
+            <form>
+                <div class="form-group">
+                    <label for="productName"><strong>Product Name</strong> </label>
+                    <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription"><strong>Product Description</strong> </label>
+                    <textarea class="form-control" id="productDescription" rows="3"
+                        placeholder="Enter product description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice"><strong> Product Price</strong></label>
+                    <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+                </div>
+                <div class="form-group">
+                    <label for="productCategory"><strong>Product Category</strong></label>
+                    <select class="form-control" id="productCategory">
+                        <option>Select a category</option>
+                        <option>Casual Shoes</option>
+                        <option>Sports Shoes</option>
+                        <option>Sneakers</option>
+                        <option value="heels">Heels</option>
+                        <option value="boots">Boots</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productRating"><strong>Product Rating</strong></label>
+                    <input type="number" class="form-control" id="productRating" placeholder="Enter product rating">
+                </div>
+                <div class="form-group">
+                    <label for="productImage"><strong>Product Image</strong></label>
+                    <input type="file" class="form-control-file" id="productImage">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('partials/adminfooter.ejs') %>
