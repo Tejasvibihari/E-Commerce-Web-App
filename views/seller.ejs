@@ -1,93 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/adminheader.ejs') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Side Navbar</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Custom CSS for the side navbar */
-        .sidenav {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #4F4A45;
-            padding-top: 20px;
-        }
 
-        .sidenav a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #ED7D31;
-            display: block;
-        }
-
-        .user-info:hover {
-            background-color: #000;
-
-        }
-
-        .sidenav a:hover {
-
-            color: #F6F1EE;
-
-        }
-
-        /* Content margin to avoid overlap with the side navbar */
-        .content {
-            margin-left: 260px;
-            padding: 20px;
-        }
-
-        .sidenav .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .sidenav .user-info img {
-            width: 40px;
-            height: 40px;
-            /* border-radius: 50%; */
-            margin-right: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="sidenav">
-        <div class="user-info">
-            <img src="img/admin.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">Hello Admin</a>
-        </div>
-        <hr class="my-0 border-top">
-        <div class="user-info">
-            <img src="img/dashboard.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">Dashboard</a>
-        </div>
-        <div class="user-info">
-            <img src="img/products.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">Products</a>
-        </div>
-        <div class="user-info">
-            <img src="img/order-fulfillment.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">Order</a>
-        </div>
-        <div class="user-info">
-            <img src="img/admin.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">My Profile</a>
-        </div>
-        <div class="user-info">
-            <img src="img/user.png" class="img-fluid ml-3" alt="">
-            <a href="#" class="">Customers</a>
-        </div>
-
-    </div>
+ 
     <div class="content">
 
         <div class="row">
@@ -204,10 +118,4 @@
             </div>
         </div>
 
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+        <%- include('partials/adminfooter.ejs') %>

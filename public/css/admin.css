@@ -1,0 +1,49 @@
+  /* Custom CSS for the side navbar */
+  .sidenav {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #4F4A45;
+      padding-top: 20px;
+  }
+
+  .sidenav a {
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #ED7D31;
+      display: block;
+  }
+
+  .user-info:hover {
+      background-color: #000;
+
+  }
+
+  .sidenav a:hover {
+
+      color: #F6F1EE;
+
+  }
+
+  /* Content margin to avoid overlap with the side navbar */
+  .content {
+      margin-left: 260px;
+      padding: 20px;
+  }
+
+  .sidenav .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .sidenav .user-info img {
+      width: 40px;
+      height: 40px;
+      /* border-radius: 50%; */
+      margin-right: 10px;
+  }
