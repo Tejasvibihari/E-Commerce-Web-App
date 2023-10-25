@@ -5,6 +5,8 @@
     cursor: pointer;
 }
 
-.circle-image:hover {
+.feature-image:hover {
     border: 4px solid linear-gradient(to right, #ff6a00, #ee0979);
 }
+
+.trending-product-section {}

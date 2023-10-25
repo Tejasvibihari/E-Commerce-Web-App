@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/header.ejs') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Navbar</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="your-logo.png" alt="Logo" width="40" height="40"></a>
-            <form class="form-inline mx-auto">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success ml-3" type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item d-flex flex-column align-items-center justify-content-center">
-                    <a class="nav-link" href="#">Seller Account</a>
-                </li>
-                <li class="nav-item d-flex flex-column align-items-center justify-content-center">
-                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
-                </li>
-                <li class="nav-item d-flex flex-column align-items-center justify-content-center">
-                    <a class="nav-link" href="#"><i class="fas fa-heart" style="color: red;"></i></a>
-                </li>
-                <li class="nav-item d-flex flex-column align-items-center justify-content-center">
-                    <a class="nav-link" href="#"><button type="button"
-                            class="btn btn-outline-warning">Login</button></a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
-
+    <!-- CarouselSection Start  -->
 
     <div id="imageCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -70,46 +35,91 @@
         </a>
     </div>
 
+    <!-- Carousel Section End  -->
 
+    <!-- Categories Section Start  -->
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-3 text-center d-flex flex-column align-items-center justify-content-center">
-                <img src="img/f-1.webp" alt="Image 1" class="img-fluid circle-image">
-                <figcaption class="mt-2"><strong>Electronics</strong></figcaption>
+            <div class="col-md-3 text-center d-flex flex-column align-items-center">
+                <a href="/mens"><img src="img/mens.webp" alt="Image 1" class="img-fluid circle-image"></a>
+                <figcaption class="mt-2"><strong>Mens</strong></figcaption>
             </div>
             <div class="col-md-3 text-center d-flex flex-column align-items-center justify-content-center">
-                <img src="img/f-2.webp" alt="Image 2" class="img-fluid circle-image">
-                <figcaption class="mt-2"><strong>Grocery</strong></figcaption>
+                <a href="/womens"><img src="img/women.avif" alt="Image 2" class="img-fluid circle-image"></a>
+                <figcaption class="mt-2"><strong>Women</strong></figcaption>
             </div>
             <div class="col-md-3 text-center d-flex flex-column align-items-center justify-content-center">
-                <img src="img/f-3.webp" alt="Image 3" class="img-fluid circle-image">
-                <figcaption class="mt-2"><strong>Beauty</strong></figcaption>
+                <a href="/kids"><img src="img/kids.avif" alt="Image 3" class="img-fluid circle-image"></a>
+                <figcaption class="mt-2"><strong>Kids</strong></figcaption>
             </div>
             <div class="col-md-3 text-center d-flex flex-column align-items-center justify-content-center">
-                <img src="img/f-4.webp" alt="Image 4" class="img-fluid circle-image">
+                <a href="/footwear"><img src="img/footwear.avif" alt="Image 4" class="img-fluid circle-image"></a>
                 <figcaption class="mt-2"><strong>Fashion</strong></figcaption>
             </div>
         </div>
     </div>
 
+    <!-- Cotegories Section End  -->
+    <div class="container-fluid mt-5 trending-product-section">
+        <h1 class="text-center my-5">Our Trending Product</h1>
+        <div class="row">
+            <!-- Product Card -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
+                <div class="card">
+                    <img src="img/women.avif" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">Product description goes here. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.</p>
+                        <p class="card-price"><strong>$19.99</strong></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Product Card -->
+            <!-- Product Card -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
+                <div class="card">
+                    <img src="img/women.avif" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">Product description goes here. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.</p>
+                        <p class="card-price"><strong>$19.99</strong></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Product Card --> <!-- Product Card -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
+                <div class="card">
+                    <img src="img/women.avif" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">Product description goes here. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.</p>
+                        <p class="card-price"><strong>$19.99</strong></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Product Card --> <!-- Product Card -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
+                <div class="card">
+                    <img src="img/women.avif" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">Product description goes here. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.</p>
+                        <p class="card-price"><strong>$19.99</strong></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Product Card -->
+            <!-- Add more product cards here -->
+        </div>
+    </div>
 
-    <!-- Add Font Awesome link for icons -->
-    <script src="https://kit.fontawesome.com/4ec6a4a959.js" crossorigin="anonymous"></script>
 
-    <!-- Add Bootstrap JS and jQuery if needed -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-    <script>
-        // Activate the carousel and set the interval to 3 seconds (3000 milliseconds)
-        $(document).ready(function () {
-            $('#imageCarousel').carousel({
-                interval: 3000
-            });
-        });
-    </script>
-</body>
-
-</html>
+    <%- include('partials/footer.ejs') %>
