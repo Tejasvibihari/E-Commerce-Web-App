@@ -10,6 +10,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 
+
+
+// Image Upload
+
+// Configure Multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./uploads");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
+const upload = multer({
+    storage,
+});
+
 // Mongoose Connection 
 
 mongoose.connect("mongodb://127.0.0.1:27017/ecommerceDB")
@@ -75,6 +93,7 @@ const womenproductSchema = new mongoose.Schema({
     }
 });
 const Women = mongoose.model("Women", womenproductSchema);
+
 const kidproductSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -102,6 +121,7 @@ const kidproductSchema = new mongoose.Schema({
     }
 });
 const Kid = mongoose.model("Kid", kidproductSchema);
+
 const footwearproductSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -185,6 +205,36 @@ app.get("/adminprofile", (req, res) => {
     res.render("adminprofile.ejs");
 });
 
+
+// Post Route 
+
+app.post("/addmen", upload.single("image"), (req, res) => {
+    const productName = req.body["productName"];
+    const description = req.body["productDescription"];
+    const productPrice = req.body["productPrice"];
+    const productCategory = req.body["productCategory"];
+    const productRating = req.body["productRating"];
+    const file = req.file.filename;
+
+    const men = new Men({
+        name: productName,
+        description: description,
+        price: productPrice,
+        category: productCategory,
+        rating: productRating,
+        imagePath: file
+    });
+
+    men.save()
+        .then(() => {
+            console.log("Saved");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    res.redirect("/product")
+
+})
 
 
 
