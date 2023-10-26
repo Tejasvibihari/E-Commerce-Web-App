@@ -84,7 +84,7 @@ const womenproductSchema = new mongoose.Schema({
         required: true
     },
     rating: {
-        type: String,
+        type: Number,
         required: true
     },
     imagePath: {
@@ -157,10 +157,44 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 app.get("/mens", (req, res) => {
-    res.render("mens.ejs");
+    const tshirtProduct = Men.find({ category: "T-shirt" });
+    const shirtProduct = Men.find({ category: "Shirt" });
+    const jacketProduct = Men.find({ category: "Jacket" });
+    const undergarmentProduct = Men.find({ category: "Undergarments" });
+
+    Promise.all([tshirtProduct, shirtProduct, jacketProduct, undergarmentProduct])
+        .then(([tshirtProduct, shirtProduct, jacketProduct, undergarmentProduct]) => {
+            res.render("mens.ejs", ({
+                tshirtProduct,
+                shirtProduct,
+                jacketProduct,
+                undergarmentProduct
+            }));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
 });
 app.get("/womens", (req, res) => {
-    res.render("womens.ejs");
+    const suitsProduct = Women.find({ category: "Suits" });
+    const sareeProduct = Women.find({ category: "Saree" });
+    const dressProduct = Women.find({ category: "Dress" });
+    const undergarmentProduct = Women.find({ category: "Undergarments" });
+
+    Promise.all([suitsProduct, sareeProduct, dressProduct, undergarmentProduct])
+        .then(([suitsProduct, sareeProduct, dressProduct, undergarmentProduct]) => {
+            res.render("womens.ejs", ({
+                suitsProduct,
+                sareeProduct,
+                dressProduct,
+                undergarmentProduct
+            }));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
 });
 app.get("/kids", (req, res) => {
     res.render("kids.ejs");
@@ -179,7 +213,25 @@ app.get("/dashboard", (req, res) => {
     res.render("seller.ejs");
 });
 app.get("/product", (req, res) => {
-    res.render("product.ejs");
+    const menProduct = Men.find({}).exec();
+    const womenProduct = Women.find({}).exec();
+    const kidProduct = Kid.find({}).exec();
+    const footwearProduct = Footwear.find({}).exec();
+
+    Promise.all([menProduct, womenProduct, kidProduct, footwearProduct])
+        .then(([menProduct, womenProduct, kidProduct, footwearProduct]) => {
+            res.render("product.ejs", {
+                mens: menProduct,
+                womens: womenProduct,
+                kids: kidProduct,
+                footwears: footwearProduct
+            });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+
 });
 // Add Product 
 
@@ -234,8 +286,91 @@ app.post("/addmen", upload.single("image"), (req, res) => {
         })
     res.redirect("/product")
 
-})
+});
 
+app.post("/addwomen", upload.single("image"), (req, res) => {
+    const productName = req.body["productName"];
+    const description = req.body["productDescription"];
+    const productPrice = req.body["productPrice"];
+    const productCategory = req.body["productCategory"];
+    const productRating = req.body["productRating"];
+    const file = req.file.filename;
+
+    const women = new Women({
+        name: productName,
+        description: description,
+        price: productPrice,
+        category: productCategory,
+        rating: productRating,
+        imagePath: file
+    });
+
+    women.save()
+        .then(() => {
+            console.log("Saved");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    res.redirect("/product")
+
+});
+
+app.post("/addkid", upload.single("image"), (req, res) => {
+    const productName = req.body["productName"];
+    const description = req.body["productDescription"];
+    const productPrice = req.body["productPrice"];
+    const productCategory = req.body["productCategory"];
+    const productRating = req.body["productRating"];
+    const file = req.file.filename;
+
+    const kid = new Kid({
+        name: productName,
+        description: description,
+        price: productPrice,
+        category: productCategory,
+        rating: productRating,
+        imagePath: file
+    });
+
+    kid.save()
+        .then(() => {
+            console.log("Saved");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    res.redirect("/product")
+
+});
+
+app.post("/addfootwear", upload.single("image"), (req, res) => {
+    const productName = req.body["productName"];
+    const description = req.body["productDescription"];
+    const productPrice = req.body["productPrice"];
+    const productCategory = req.body["productCategory"];
+    const productRating = req.body["productRating"];
+    const file = req.file.filename;
+
+    const footwear = new Footwear({
+        name: productName,
+        description: description,
+        price: productPrice,
+        category: productCategory,
+        rating: productRating,
+        imagePath: file
+    });
+
+    footwear.save()
+        .then(() => {
+            console.log("Saved");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    res.redirect("/product")
+
+});
 
 
 
