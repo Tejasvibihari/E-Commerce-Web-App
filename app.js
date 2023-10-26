@@ -1,14 +1,135 @@
 import bodyParser from "body-parser";
 import express from "express";
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 import multer from "multer";
-
-
-
 
 
 const app = express();
 const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(express.static("uploads"));
+
+// Mongoose Connection 
+
+mongoose.connect("mongodb://127.0.0.1:27017/ecommerceDB")
+    .then(() => {
+        console.log("Database Created Successfully");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+const menproductSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: String,
+        required: true
+    },
+    imagePath: {
+        type: String,
+        required: true
+    }
+});
+const Men = mongoose.model("Men", menproductSchema);
+
+const womenproductSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: String,
+        required: true
+    },
+    imagePath: {
+        type: String,
+        required: true
+    }
+});
+const Women = mongoose.model("Women", womenproductSchema);
+const kidproductSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: String,
+        required: true
+    },
+    imagePath: {
+        type: String,
+        required: true
+    }
+});
+const Kid = mongoose.model("Kid", kidproductSchema);
+const footwearproductSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: String,
+        required: true
+    },
+    imagePath: {
+        type: String,
+        required: true
+    }
+});
+const Footwear = mongoose.model("Footwear", footwearproductSchema);
+
 
 
 app.use(express.static("public"));
