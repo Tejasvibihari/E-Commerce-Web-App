@@ -57,3 +57,14 @@
     font-weight: bolder;
     text-align: center;
 }
+
+
+.product-warning {
+    text-align: center;
+    color: red;
+    border: solid orange;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+}

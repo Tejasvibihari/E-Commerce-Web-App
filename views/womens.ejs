@@ -41,65 +41,29 @@
         </div>
         <div class="row">
             <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-                <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+            <% suitsProduct.forEach(element=> { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <!-- Smaller size for medium and small screens -->
+                    <div class="card" style="width: 18rem;">
+                        <div class=" d-flex align-items-center justify-content-center">
+                            <img src="<%= element.imagePath %>" class="card-img-top trending_card_img mt-1"
+                                alt="Product Image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= element.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= element.description %>
+                            </p>
+                            <p class="card-price"><strong>
+                                    <%= element.price %>
+                                </strong></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Add more product cards here -->
+                <% }) %>
         </div>
     </div>
 
@@ -111,65 +75,29 @@
         </div>
         <div class="row">
             <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-                <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+            <% sareeProduct.forEach(element=> { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <!-- Smaller size for medium and small screens -->
+                    <div class="card" style="width: 18rem;">
+                        <div class=" d-flex align-items-center justify-content-center">
+                            <img src="<%= element.imagePath %>" class="card-img-top trending_card_img mt-1"
+                                alt="Product Image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= element.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= element.description %>
+                            </p>
+                            <p class="card-price"><strong>
+                                    <%= element.price %>
+                                </strong></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Add more product cards here -->
+                <% }) %>
         </div>
     </div>
     <!-- Shirt Section End  -->
@@ -185,65 +113,29 @@
         </div>
         <div class="row">
             <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-                <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+            <% dressProduct.forEach(element=> { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <!-- Smaller size for medium and small screens -->
+                    <div class="card" style="width: 18rem;">
+                        <div class=" d-flex align-items-center justify-content-center">
+                            <img src="<%= element.imagePath %>" class="card-img-top trending_card_img mt-1"
+                                alt="Product Image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= element.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= element.description %>
+                            </p>
+                            <p class="card-price"><strong>
+                                    <%= element.price %>
+                                </strong></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Add more product cards here -->
+                <% }) %>
         </div>
     </div>
 
@@ -257,65 +149,29 @@
         </div>
         <div class="row">
             <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-                <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+            <% undergarmentProduct.forEach(element=> { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <!-- Smaller size for medium and small screens -->
+                    <div class="card" style="width: 18rem;">
+                        <div class=" d-flex align-items-center justify-content-center">
+                            <img src="<%= element.imagePath %>" class="card-img-top trending_card_img mt-1"
+                                alt="Product Image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= element.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= element.description %>
+                            </p>
+                            <p class="card-price"><strong>
+                                    <%= element.price %>
+                                </strong></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card --> <!-- Product Card -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Smaller size for medium and small screens -->
-                <div class="card" style="width: 18rem;">
-                    <div class=" d-flex align-items-center justify-content-center">
-                        <img src="img/women.avif" class="card-img-top trending_card_img mt-1" alt="Product Image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text"></p>
-                        <p class="card-price"><strong>$19.99</strong></p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Card -->
-            <!-- Add more product cards here -->
+                <% }) %>
         </div>
     </div>
 
