@@ -280,13 +280,33 @@ app.get("/kids/:kidsId", (req, res) => {
     }
 
     // Find women object by id
-    Kids.findOne({ _id: requestedKidsId }).then((kids) => {
+    Kid.findOne({ _id: requestedKidsId }).then((kids) => {
         res.render("womenorder.ejs", {
             name: kids.name,
             description: kids.description,
             price: kids.price,
             imagePath: kids.imagePath,
             rating: kids.rating
+        });
+    });
+});
+
+app.get("/footwears/:footwearsId", (req, res) => {
+    const requestedfootwearsId = req.params.footwearsId;
+
+    // Validate the mensId parameter
+    if (!mongoose.Types.ObjectId.isValid(requestedKidsId)) {
+        return res.status(400).send("Invalid mensId parameter");
+    }
+
+    // Find women object by id
+    Footwear.findOne({ _id: requestedfootwearsId }).then((footwears) => {
+        res.render("womenorder.ejs", {
+            name: footwears.name,
+            description: footwears.description,
+            price: footwears.price,
+            imagePath: footwears.imagePath,
+            rating: footwears.rating
         });
     });
 });
