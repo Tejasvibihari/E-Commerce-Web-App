@@ -151,7 +151,6 @@ const footwearproductSchema = new mongoose.Schema({
 const Footwear = mongoose.model("Footwear", footwearproductSchema);
 
 
-
 app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.render("index.ejs");
@@ -233,6 +232,26 @@ app.get("/product", (req, res) => {
         });
 
 });
+app.get("/mens/:mensId", (req, res) => {
+    const requestedMensId = req.params.mensId;
+
+    // Validate the mensId parameter
+    if (!mongoose.Types.ObjectId.isValid(requestedMensId)) {
+        return res.status(400).send("Invalid mensId parameter");
+    }
+
+    // Find Men object by id
+    Men.findOne({ _id: requestedMensId }).then((mens) => {
+        res.render("menorder.ejs", {
+            name: mens.name,
+            description: mens.description,
+            price: mens.price,
+            imagePath: mens.imagePath,
+            rating: mens.rating
+        });
+    });
+});
+
 // Add Product 
 
 app.get("/addmen", (req, res) => {
