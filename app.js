@@ -251,7 +251,25 @@ app.get("/mens/:mensId", (req, res) => {
         });
     });
 });
+app.get("/womens/:womensId", (req, res) => {
+    const requestedWomensId = req.params.womensId;
 
+    // Validate the mensId parameter
+    if (!mongoose.Types.ObjectId.isValid(requestedWomensId)) {
+        return res.status(400).send("Invalid mensId parameter");
+    }
+
+    // Find women object by id
+    Women.findOne({ _id: requestedWomensId }).then((womens) => {
+        res.render("womenorder.ejs", {
+            name: womens.name,
+            description: womens.description,
+            price: womens.price,
+            imagePath: womens.imagePath,
+            rating: womens.rating
+        });
+    });
+});
 // Add Product 
 
 app.get("/addmen", (req, res) => {
