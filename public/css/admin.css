@@ -68,3 +68,9 @@
     justify-content: center;
 
 }
+
+.admin_image {
+    border: darkorange;
+    border-style: solid;
+    border-radius: 50px;
+}

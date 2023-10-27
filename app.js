@@ -196,10 +196,44 @@ app.get("/womens", (req, res) => {
 
 });
 app.get("/kids", (req, res) => {
-    res.render("kids.ejs");
+    const tshirtProduct = Kid.find({ category: "T-shirt" });
+    const shirtProduct = Kid.find({ category: "Shirt" });
+    const ethenicProduct = Kid.find({ category: "Ethenic Wear" });
+    const undergarmentProduct = Kid.find({ category: "Undergarments" });
+
+    Promise.all([tshirtProduct, shirtProduct, ethenicProduct, undergarmentProduct])
+        .then(([tshirtProduct, shirtProduct, ethenicProduct, undergarmentProduct]) => {
+            res.render("kids.ejs", ({
+                tshirtProduct,
+                shirtProduct,
+                ethenicProduct,
+                undergarmentProduct
+            }));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
 app.get("/footwear", (req, res) => {
-    res.render("footwear.ejs");
+    const casualShoe = Footwear.find({ category: "Casual Shoes" });
+    const sportShoe = Footwear.find({ category: "Sports Shoes" });
+    const sneakerShoe = Footwear.find({ category: "Sneakers" });
+    const heelShoe = Footwear.find({ category: "Heels" });
+    const bootShoe = Footwear.find({ category: "Boots" });
+
+    Promise.all([casualShoe, sportShoe, sneakerShoe, heelShoe, bootShoe])
+        .then(([casualShoe, sportShoe, sneakerShoe, heelShoe, bootShoe]) => {
+            res.render("footwear.ejs", ({
+                casualShoe,
+                sportShoe,
+                sneakerShoe,
+                heelShoe,
+                bootShoe
+            }));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
 
 
@@ -281,7 +315,7 @@ app.get("/kids/:kidsId", (req, res) => {
 
     // Find women object by id
     Kid.findOne({ _id: requestedKidsId }).then((kids) => {
-        res.render("womenorder.ejs", {
+        res.render("kidsorder.ejs", {
             name: kids.name,
             description: kids.description,
             price: kids.price,
@@ -295,13 +329,13 @@ app.get("/footwears/:footwearsId", (req, res) => {
     const requestedfootwearsId = req.params.footwearsId;
 
     // Validate the mensId parameter
-    if (!mongoose.Types.ObjectId.isValid(requestedKidsId)) {
+    if (!mongoose.Types.ObjectId.isValid(requestedfootwearsId)) {
         return res.status(400).send("Invalid mensId parameter");
     }
 
     // Find women object by id
     Footwear.findOne({ _id: requestedfootwearsId }).then((footwears) => {
-        res.render("womenorder.ejs", {
+        res.render("kidsorder.ejs", {
             name: footwears.name,
             description: footwears.description,
             price: footwears.price,
