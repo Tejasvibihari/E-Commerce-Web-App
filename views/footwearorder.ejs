@@ -1,0 +1,126 @@
+<%- include('partials/header.ejs') %>
+
+
+    <div class="row container-fluid mt-5">
+        <div class="col-lg-6">
+            <img src="/<%= imagePath %>" class="img-fluid rounded w-100" alt="">
+        </div>
+        <div class="col-lg-6">
+            <h2>
+                <%= name %>
+            </h2>
+            <p>
+                <%= description %>
+            </p>
+            <div class="rating_box d-flex justify-content-middle">
+                <%= rating %> <img src="\img\star.gif" width="25px" alt="Star Gif">
+            </div>
+            <hr>
+            <div>
+                <strong>₹ <%= price %></strong>
+                <div class="inc_tax">
+                    inclusive of all taxes
+                </div>
+            </div>
+            <br>
+            <div>
+                <strong>SELECT SIZE</strong>
+            </div>
+            <div class="mt-2">
+                <form action="/productorder" method="post">
+                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
+                    <label class="btn btn-outline-danger ml-1" for="option1">6</label>
+                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                    <label class="btn btn-outline-danger ml-1" for="option2">7</label>
+                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                    <label class="btn btn-outline-danger ml-1" for="option3">8</label>
+                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                    <label class="btn btn-outline-danger ml-1" for="option3">9</label>
+                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                    <label class="btn btn-outline-danger ml-1" for="option3">10</label>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" id="street" placeholder="Street">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="state">State</label>
+                        <select id="state" class="form-control">
+                            <option selected>Choose...</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                            <option value="Daman and Diu">Daman and Diu</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Ladakh">Ladakh</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" class="form-control" id="pincode" placeholder="Pincode">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('partials/footer.ejs') %>

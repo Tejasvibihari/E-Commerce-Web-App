@@ -137,35 +137,45 @@
                 <h1 class="text-center product_head mb-3">Kids Product</h1>
                 <table class="table table-bordered table-striped">
                     <thead class="table-success">
-                        <% if (kids !="" ) { %>
-                            <% kids.forEach(element=> { %>
-                                <tr>
-                                    <td>
-                                        <img src="<%= element.imagePath %>" width="100" class="img-thumbnail" alt="">
-                                    </td>
-                                    <td>
-                                        <%= element.name %>
-                                    </td>
-                                    <td>
-                                        <%= element.description %>
-                                    </td>
-                                    <td>
-                                        <%= element.price %>
-                                    </td>
-                                    <td>
-                                        <%= element.category %>
-                                    </td>
-                                    <td>
-                                        <%= element.rating %>
-                                    </td>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <% if (kids !="" ) { %>
+                        <% kids.forEach(element=> { %>
+                            <tr>
+                                <td>
+                                    <img src=" <%=element.imagePath %>" width="100" class="img-thumbnail" alt="">
+                                </td>
+                                <td>
+                                    <%= element.name %>
+                                </td>
+                                <td>
+                                    <%= element.description %>
+                                </td>
+                                <td>
+                                    <%= element.price %>
+                                </td>
+                                <td>
+                                    <%= element.category %>
+                                </td>
+                                <td>
+                                    <%= element.rating %>
+                                </td>
 
-                                </tr>
-                                <% }) %>
+                            </tr>
+                            <% }) %>
 
-                                    <% } else { %>
-                                        <h2 class="text-center rounded product-warning">No Data Found!</h2>
-                                        <% } %>
-                                            </tbody>
+                                <% } else { %>
+                                    <h2 class="text-center rounded product-warning">No Data Found!</h2>
+                                    <% } %>
+                                        </tbody>
                 </table>
 
             </div>
@@ -176,36 +186,46 @@
                 <h1 class="text-center product_head mb-3">Footwear Product</h1>
                 <table class="table table-bordered table-striped">
                     <thead class="table-warning">
-                        <% if (footwears !="" ) { %>
-                            <% footwears.forEach(element=> { %>
-                                <tr>
-                                    <td>
-                                        <img src="<%= element.imagePath %>" width="100" class="img-thumbnail" alt="">
-                                    </td>
-                                    <td>
-                                        <%= element.name %>
-                                    </td>
-                                    <td>
-                                        <%= element.description %>
-                                    </td>
-                                    <td>
-                                        <%= element.price %>
-                                    </td>
-                                    <td>
-                                        <%= element.category %>
-                                    </td>
-                                    <td>
-                                        <%= element.rating %>
-                                    </td>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <% if (footwears !="" ) { %>
+                        <% footwears.forEach(element=> { %>
+                            <tr>
+                                <td>
+                                    <img src="<%= element.imagePath %>" width="100" class="img-thumbnail" alt="">
+                                </td>
+                                <td>
+                                    <%= element.name %>
+                                </td>
+                                <td>
+                                    <%= element.description %>
+                                </td>
+                                <td>
+                                    <%= element.price %>
+                                </td>
+                                <td>
+                                    <%= element.category %>
+                                </td>
+                                <td>
+                                    <%= element.rating %>
+                                </td>
 
-                                </tr>
-                                <% }) %>
+                            </tr>
+                            <% }) %>
 
-                                    <% } else { %>
-                                        <h2 class="text-center rounded product-warning">No Data Found!</h2>
-                                        <% } %>
+                                <% } else { %>
+                                    <h2 class="text-center rounded product-warning">No Data Found!</h2>
+                                    <% } %>
 
-                                            </tbody>
+                                        </tbody>
                 </table>
             </div>
 
