@@ -2,6 +2,9 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose, { Mongoose } from "mongoose";
 import multer from "multer";
+import razorpay from 'Razorpay';
+
+
 
 
 const app = express();
@@ -150,6 +153,10 @@ const footwearproductSchema = new mongoose.Schema({
 });
 const Footwear = mongoose.model("Footwear", footwearproductSchema);
 
+var instance = new razorpay({
+    key_id: 'rzp_test_CAdqFncSV9iZpY',
+    key_secret: 'vgaSXMb9KbPKu7B3yc5kXpEX',
+});
 
 app.use(express.static("public"));
 app.get("/", (req, res) => {
@@ -367,6 +374,9 @@ app.get("/customers", (req, res) => {
 app.get("/adminprofile", (req, res) => {
     res.render("adminprofile.ejs");
 });
+app.get("/editadmin", (req, res) => {
+    res.render("editadmin.ejs");
+});
 
 
 // Post Route 
@@ -483,9 +493,40 @@ app.post("/addfootwear", upload.single("image"), (req, res) => {
 
 });
 
+// Admin Form Data 
+// app.get("/editadmin", (req, res) => {
+//     const firstname = req.body[first_name];
+//     const lastname = req.body[last_name];
+//     const email = req.body[email];
+//     const mobile = req.body[mobile];
+//     const companyname = req.body[company_name];
+//     const working_email = req.body[workking_email];
+//     const pancard = req.body[pan_card];
+//     const streetaddress = req.body[street_address];
+//     const city = req.body[city];
+//     const state = req.body[state];
+//     const country = req.body[country];
+//     const pincode = req.body[pincode];
+//     const image = req.file.filename;
 
 
 
+// })
+
+
+// app.post("order/orderId", (req, res) => {
+//     console.log("Created Order Request", req.body);
+//     var options = {
+//         amount: req.body.price,  // amount in the smallest currency unit
+//         currency: "INR",
+//         receipt: "order_rcptid_11"
+//     };
+//     instance.orders.create(options, function (err, order) {
+//         console.log(order);
+//         res.send({ orderId: order.id });
+//     });
+
+// });
 
 
 
