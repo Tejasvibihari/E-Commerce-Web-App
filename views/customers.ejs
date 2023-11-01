@@ -1,4 +1,58 @@
 <%- include('partials/adminheader.ejs') %>
 
+    <div class="content">
+        <div class="container">
+            <h2>Customer Details</h2>
+            <% if (orders !="" ) { %>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Street Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Pincode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows with data go here -->
+                        <% orders.forEach(element=> { %>
+                            <tr>
+                                <td>
+                                    <%= element.firstName + " " + element.lastName %>
+                                </td>
 
+                                <td>
+                                    <%= element.mobileNumber %>
+                                </td>
+                                <td>
+                                    <%= element.email %>
+                                </td>
+                                <td>
+                                    <%= element.street + " " + element.city + " " + element.state%>
+                                </td>
+                                <td>
+                                    <%= element.city%>
+                                </td>
+                                <td>
+                                    <%= element.state%>
+                                </td>
+                                <td>
+                                    <%= element.pincode %>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                                <!-- You can add more rows here -->
+                    </tbody>
+                </table>
+
+                <% } else { %>
+                    <h2 class="text-center mt-5 pt-5" style="color: orange;"> No Customers Found!
+                    </h2>
+                    <% } %>
+        </div>
+    </div>
     <%- include('partials/adminfooter.ejs') %>

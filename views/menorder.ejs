@@ -1,6 +1,7 @@
 <%- include('partials/header.ejs') %>
 
 
+
     <div class="row container-fluid mt-5">
         <div class="col-lg-6">
             <img src="/<%= imagePath %>" class="img-fluid rounded w-100" alt="">
@@ -27,51 +28,58 @@
                 <strong>SELECT SIZE</strong>
             </div>
             <div class="mt-2">
-                <form action="/productorder" method="post">
-                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
+                <form action="/checkout" method="POST">
+                    <input type="radio" name="size" class="btn-check" name="options" id="option1" value="S"
+                        autocomplete="off">
                     <label class="btn btn-outline-danger ml-1" for="option1">S</label>
-                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                    <input type="radio" name="size" class="btn-check" name="options" id="option2" value="M"
+                        autocomplete="off">
                     <label class="btn btn-outline-danger ml-1" for="option2">M</label>
-                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                    <input type="radio" name="size" class="btn-check" name="options" id="option3" value="L"
+                        autocomplete="off">
                     <label class="btn btn-outline-danger ml-1" for="option3">L</label>
-                    <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+                    <input type="radio" name="size" class="btn-check" name="options" id="option4" value="XL"
+                        autocomplete="off">
                     <label class="btn btn-outline-danger ml-1" for="option4">XL</label>
-                    <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
+                    <input type="radio" name="size" class="btn-check" name="options" id="option5" value="XXL"
+                        autocomplete="off">
                     <label class="btn btn-outline-danger ml-1" for="option5">XXL</label>
-                </form>
+
             </div>
             <hr>
             <div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <input type="text" name="firstName" class="form-control" id="firstName"
+                            placeholder="First Name">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="mobileNumber">Mobile Number</label>
-                    <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number">
+                    <input type="text" name="mobileNumber" class="form-control" id="mobileNumber"
+                        placeholder="Mobile Number">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="street">Street</label>
-                    <input type="text" class="form-control" id="street" placeholder="Street">
+                    <input type="text" name="street" class="form-control" id="street" placeholder="Street">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="City">
+                        <input type="text" name="city" class="form-control" id="city" placeholder="City">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="state">State</label>
-                        <select id="state" class="form-control">
+                        <select id="state" name="state" class="form-control">
                             <option selected>Choose...</option>
                             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -114,13 +122,26 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="pincode">Pincode</label>
-                        <input type="text" class="form-control" id="pincode" placeholder="Pincode">
+                        <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Pincode">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="hidden" name="productid" value="<%= id %>" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="hidden" name="productname" value="<%= name %>" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="hidden" name="productprice" value="<%= price %>" class="form-control">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Checkout</button>
+                <button type="submit" class="btn btn-primary">Place Order</button>
+                </form>
+
             </div>
         </div>
     </div>
+
+
 
 
     <%- include('partials/footer.ejs') %>

@@ -3,40 +3,63 @@
     <div class="content">
         <div class="container">
             <h2>Product Order Details</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Product Price</th>
-                        <th>Name</th>
-                        <th>Size</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th>Street Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Pincode</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Table rows with data go here -->
-                    <tr>
-                        <td>1</td>
-                        <td>Product A</td>
-                        <td>$19.99</td>
-                        <td>John Doe</td>
-                        <td>Medium</td>
-                        <td>123-456-7890</td>
-                        <td>john.doe@example.com</td>
-                        <td>123 Main St</td>
-                        <td>Cityville</td>
-                        <td>Stateville</td>
-                        <td>12345</td>
-                    </tr>
-                    <!-- You can add more rows here -->
-                </tbody>
-            </table>
+            <% if (orders !="" ) { %>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Product Price</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Street Address</th>
+                            <th>Pincode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows with data go here -->
+                        <% orders.forEach(element=> { %>
+                            <tr>
+                                <td>
+                                    <%= element.productid %>
+                                </td>
+                                <td>
+                                    <%= element.productname %>
+                                </td>
+                                <td>
+                                    <%= element.productprice %>
+                                </td>
+                                <td>
+                                    <%= element.firstName + " " + element.lastName %>
+                                </td>
+                                <td>
+                                    <%= element.size %>
+                                </td>
+                                <td>
+                                    <%= element.mobileNumber %>
+                                </td>
+                                <td>
+                                    <%= element.email %>
+                                </td>
+                                <td>
+                                    <%= element.street + " " + element.city + " " + element.state%>
+                                </td>
+                                <td>
+                                    <%= element.pincode %>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                                <!-- You can add more rows here -->
+                    </tbody>
+                </table>
+
+                <% } else { %>
+                    <h2 class="text-center mt-5 pt-5" style="color: orange;"> No Orders Found!
+                    </h2>
+                    <% } %>
         </div>
     </div>
     <%- include('partials/adminfooter.ejs') %>

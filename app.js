@@ -2,7 +2,8 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose, { Mongoose } from "mongoose";
 import multer from "multer";
-import razorpay from 'Razorpay';
+import Razorpay from 'razorpay';
+// import { createOrder } from './controllers/paymentController.js';
 
 
 
@@ -95,6 +96,7 @@ const womenproductSchema = new mongoose.Schema({
         required: true
     }
 });
+
 const Women = mongoose.model("Women", womenproductSchema);
 
 const kidproductSchema = new mongoose.Schema({
@@ -153,10 +155,62 @@ const footwearproductSchema = new mongoose.Schema({
 });
 const Footwear = mongoose.model("Footwear", footwearproductSchema);
 
-var instance = new razorpay({
-    key_id: 'rzp_test_CAdqFncSV9iZpY',
-    key_secret: 'vgaSXMb9KbPKu7B3yc5kXpEX',
+// Order Schema 
+
+// Define a schema for the order form
+const orderSchema = new mongoose.Schema({
+    size: {
+        type: String, // Should be 'S', 'M', 'L', 'XL', or 'XXL'
+        required: true,
+    },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    mobileNumber: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    street: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    state: {
+        type: String,
+        required: true,
+    },
+    pincode: {
+        type: Number,
+        required: true,
+    },
+    productid: {
+        type: String,
+        required: true
+    },
+    productname: {
+        type: String,
+        required: true
+    },
+    productprice: {
+        type: String,
+        required: true
+    }
 });
+
+// Create a model for the order schema
+const Order = mongoose.model('Order', orderSchema);
 
 app.use(express.static("public"));
 app.get("/", (req, res) => {
@@ -273,25 +327,31 @@ app.get("/product", (req, res) => {
         });
 
 });
+
+
+
 app.get("/mens/:mensId", (req, res) => {
     const requestedMensId = req.params.mensId;
 
-    // Validate the mensId parameter
     if (!mongoose.Types.ObjectId.isValid(requestedMensId)) {
         return res.status(400).send("Invalid mensId parameter");
     }
 
-    // Find Men object by id
     Men.findOne({ _id: requestedMensId }).then((mens) => {
         res.render("menorder.ejs", {
+            id: mens._id,
             name: mens.name,
             description: mens.description,
             price: mens.price,
             imagePath: mens.imagePath,
-            rating: mens.rating
+            rating: mens.rating,
+            category: mens.category
         });
+
+
     });
 });
+
 app.get("/womens/:womensId", (req, res) => {
     const requestedWomensId = req.params.womensId;
 
@@ -303,11 +363,13 @@ app.get("/womens/:womensId", (req, res) => {
     // Find women object by id
     Women.findOne({ _id: requestedWomensId }).then((womens) => {
         res.render("womenorder.ejs", {
+            id: womens._id,
             name: womens.name,
             description: womens.description,
             price: womens.price,
             imagePath: womens.imagePath,
-            rating: womens.rating
+            rating: womens.rating,
+            category: womens.category
         });
     });
 });
@@ -323,11 +385,13 @@ app.get("/kids/:kidsId", (req, res) => {
     // Find women object by id
     Kid.findOne({ _id: requestedKidsId }).then((kids) => {
         res.render("kidsorder.ejs", {
+            id: kids._id,
             name: kids.name,
             description: kids.description,
             price: kids.price,
             imagePath: kids.imagePath,
-            rating: kids.rating
+            rating: kids.rating,
+            category: kids.category
         });
     });
 });
@@ -342,12 +406,14 @@ app.get("/footwears/:footwearsId", (req, res) => {
 
     // Find women object by id
     Footwear.findOne({ _id: requestedfootwearsId }).then((footwears) => {
-        res.render("kidsorder.ejs", {
+        res.render("footwearorder.ejs", {
+            id: footwears._id,
             name: footwears.name,
             description: footwears.description,
             price: footwears.price,
             imagePath: footwears.imagePath,
-            rating: footwears.rating
+            rating: footwears.rating,
+            category: footwears.category
         });
     });
 });
@@ -366,16 +432,27 @@ app.get("/addfootwear", (req, res) => {
     res.render("addfootwear.ejs");
 });
 app.get("/order", (req, res) => {
-    res.render("order.ejs");
+
+    Order.find({})
+        .then((orders) => {
+            res.render("order.ejs", { orders })
+        });
 });
+
 app.get("/customers", (req, res) => {
-    res.render("customers.ejs");
+    Order.find({})
+        .then((orders) => {
+            res.render("customers.ejs", { orders })
+        });
 });
 app.get("/adminprofile", (req, res) => {
     res.render("adminprofile.ejs");
 });
 app.get("/editadmin", (req, res) => {
     res.render("editadmin.ejs");
+});
+app.get("/ordersucces", (req, res) => {
+    res.render("ordersucces.ejs");
 });
 
 
@@ -514,23 +591,46 @@ app.post("/addfootwear", upload.single("image"), (req, res) => {
 // })
 
 
-// app.post("order/orderId", (req, res) => {
-//     console.log("Created Order Request", req.body);
-//     var options = {
-//         amount: req.body.price,  // amount in the smallest currency unit
-//         currency: "INR",
-//         receipt: "order_rcptid_11"
-//     };
-//     instance.orders.create(options, function (err, order) {
-//         console.log(order);
-//         res.send({ orderId: order.id });
-//     });
-
-// });
 
 
+app.post('/checkout', (req, res) => {
+    // Create a new order using the Mongoose model and request body
+    const size = req.body["size"];
+    const firstName = req.body["firstName"];
+    const lastName = req.body["lastName"];
+    const mobileNumber = req.body["mobileNumber"];
+    const email = req.body["email"];
+    const street = req.body["street"];
+    const city = req.body["city"];
+    const state = req.body["state"];
+    const pincode = req.body["pincode"];
+    const productid = req.body["productid"];
+    const productname = req.body["productname"];
+    const productprice = req.body["productprice"];
 
-
+    const order = new Order({
+        size: size,
+        firstName: firstName,
+        lastName: lastName,
+        mobileNumber: mobileNumber,
+        email: email,
+        street: street,
+        city: city,
+        state: state,
+        pincode: pincode,
+        productid: productid,
+        productname: productname,
+        productprice: productprice
+    });
+    order.save()
+        .then(() => {
+            console.log("Data Saved")
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    res.redirect("/ordersucces");
+});
 
 
 
